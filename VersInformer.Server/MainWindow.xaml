@@ -690,7 +690,7 @@
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="75"></RowDefinition>
                                                     <RowDefinition Height="50"></RowDefinition>
-                                                    <RowDefinition Height="165"></RowDefinition>
+                                                    <RowDefinition Height="250"></RowDefinition>
                                                     <RowDefinition Height="*"></RowDefinition>
                                                     
                                                 </Grid.RowDefinitions>
@@ -704,10 +704,12 @@
                                                     <Label Content="after minutes"></Label>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Vertical" Grid.Row="2">
-                                                    <Button Background="DarkOrange" Width="150" Height="25" Name="btnVerWill" Content="Versiyon Alınacak?" Margin="0,10,0,5" Click="btnVerWill_Click" />
-                                                    <Button Background="Red" Width="150" Height="25" Name="btnVerNow" Content="Versiyon Alınıyor?" Margin="0,10,0,5" Click="btnVerNow_Click" />
-                                                    <Button Background="Lime" Width="150" Height="25" Name="btnVerPast" Content="Versiyon Alındı?" Margin="0,10,0,5" Click="btnVerPast_Click" />
-                                                    <Button Background="DodgerBlue" Width="150" Height="25" Name="btnVerReady" Content="Versiyon Teste Hazır?" Margin="0,10,0,5" Click="btnVerReady_Click" />
+                                                    <Button Background="DarkOrange" Width="150" Height="25" Name="btnVerWill" Content="Versiyon Alınacak?" Margin="0,2,0,5" Click="btnVerWill_Click" />
+                                                    <Button Background="Red" Width="150" Height="25" Name="btnVerNow" Content="Versiyon Alınıyor?" Margin="0,2,0,5" Click="btnVerNow_Click" />
+                                                    <Button Background="Lime" Width="150" Height="25" Name="btnVerPast" Content="Versiyon Alındı?" Margin="0,2,0,5" Click="btnVerPast_Click" />
+                                                    <Button Background="DodgerBlue" Width="150" Height="25" Name="btnVerReady" Content="Versiyon Teste Hazır?" Margin="0,2,0,5" Click="btnVerReady_Click" />
+                                                    <Button Background="#FFD82D83" Width="150" Height="25" Name="btnCheckInForbidden" Content="Check-in yasak" Margin="0,2,0,5" Click="btnForbidCheckIn_Click" UseLayoutRounding="True" />
+                                                    <Button Background="GreenYellow" Width="150" Height="25" Name="btnCheckInAllowed" Content="Check-in serbest" Margin="0,2,0,5" Click="btnAllowCheckIn_Click" UseLayoutRounding="True" />
                                                 </StackPanel>
 											</Grid>
 										</Border>

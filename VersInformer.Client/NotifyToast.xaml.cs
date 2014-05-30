@@ -59,6 +59,21 @@ namespace VersInformer.Client
                         gradientColl.Add(new GradientStop(Colors.MediumTurquoise, 1d));
 
                         break;
+
+                    case "Forbid":
+                        gradientColl = new GradientStopCollection();
+                        gradientColl.Add(new GradientStop(Colors.Firebrick, 0d));
+                        gradientColl.Add(new GradientStop(Colors.Red, 0.5d));
+                        gradientColl.Add(new GradientStop(Colors.Tomato, 1d));
+                        break;
+
+                    case "Allow":
+                        gradientColl = new GradientStopCollection();
+                        gradientColl.Add(new GradientStop(Colors.Green, 0d));
+                        gradientColl.Add(new GradientStop(Colors.Lime, 0.5d));
+                        gradientColl.Add(new GradientStop(Colors.YellowGreen, 1d));
+                        break;
+
                     default:
                         break;
                 }

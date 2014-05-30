@@ -166,6 +166,8 @@ namespace VersInformer.Server
                 btnVerNow.IsEnabled = false;
                 btnVerPast.IsEnabled = false;
                 btnVerReady.IsEnabled = false;
+                btnCheckInForbidden.IsEnabled = false;
+                btnCheckInAllowed.IsEnabled = false;
             }
             else
             {
@@ -192,6 +194,8 @@ namespace VersInformer.Server
                 btnVerNow.IsEnabled = true;
                 btnVerPast.IsEnabled = true;
                 btnVerReady.IsEnabled = true;
+                btnCheckInForbidden.IsEnabled = true;
+                btnCheckInAllowed.IsEnabled = true;
             }
             lblServerStatus.Background = brush;
         }
@@ -275,7 +279,7 @@ namespace VersInformer.Server
                 From = Settings.Default.NickName,
                 AfterMinutes = "",
                 Environment = SelectedEnvironment,
-                Message = string.Format("{0} ortamına versiyon alınınıyor. Check-in yasakları başlamıştır.", SelectedEnvironment),
+                Message = string.Format("{0} ortamına versiyon alınınıyor.", SelectedEnvironment),
                 Time = DateTime.Now.ToString()
             };
 
@@ -334,5 +338,52 @@ namespace VersInformer.Server
             envLive.IsChecked = false;
         }
 
+        private void btnForbidCheckIn_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(SelectedEnvironment))
+            {
+                ShowWarning("Hangi ortam için aksiyon alınacağını belirtmeniz gerekir."); return;
+            }
+            var releaseAction = new RemoteMessage()
+            {
+                Type = "ReleaseAction",
+                Action = "Forbid",
+                From = Settings.Default.NickName,
+                AfterMinutes = "",
+                Environment = SelectedEnvironment,
+                Message = string.Format("{0} ortamı için check-in yasakları başlamıştır.", SelectedEnvironment),
+                Time = DateTime.Now.ToString()
+            };
+
+            _server.SendMessage(JsonConvert.SerializeObject(releaseAction));
+            txtMinutes.Text = string.Empty;
+            envTest.IsChecked = false;
+            envUAT.IsChecked = false;
+            envLive.IsChecked = false;
+        }
+
+        private void btnAllowCheckIn_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(SelectedEnvironment))
+            {
+                ShowWarning("Hangi ortam için aksiyon alınacağını belirtmeniz gerekir."); return;
+            }
+            var releaseAction = new RemoteMessage()
+            {
+                Type = "ReleaseAction",
+                Action = "Allow",
+                From = Settings.Default.NickName,
+                AfterMinutes = "",
+                Environment = SelectedEnvironment,
+                Message = string.Format("{0} ortamı için check-in yapılabilir.", SelectedEnvironment),
+                Time = DateTime.Now.ToString()
+            };
+
+            _server.SendMessage(JsonConvert.SerializeObject(releaseAction));
+            txtMinutes.Text = string.Empty;
+            envTest.IsChecked = false;
+            envUAT.IsChecked = false;
+            envLive.IsChecked = false;
+        }
     }
 }
