@@ -152,12 +152,14 @@ namespace VersInformer.Client
 
         private void btnSendMessage_Click(object sender, RoutedEventArgs e)
         {
+            //Burada eger server connection'i kopmussa uyari verme veya connection'i kapatma kodu eklemek lazım.
             if (!_isConnected || string.IsNullOrEmpty(txtMessage.Text))
             {
                 return;
             }
 
             _remoteObject.SendMessage(JsonConvert.SerializeObject(new { From = Settings.Default.NickName, Message = txtMessage.Text, Time = DateTime.Now }));
+
             txtMessage.Text = "";
         }
 
@@ -247,6 +249,19 @@ namespace VersInformer.Client
                 btnSendMessage_Click(null, null);
             }
         }
+
+        private void lbMessage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void lbMessage_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+       
+
+        //Minimization Code
 
     }
 }
